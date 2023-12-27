@@ -12,17 +12,18 @@ struct vanna {
 	float s_with_openings;
 	float s_without_openings;
 };
-float scanf_plitka(struct plitka * P);
-float calculat(float l_w, float h_w, float open_sh[], float open_hgh[], float klv_open, struct vanna* V,int s);
+float scanf_plitka(struct plitka* P);
+float calculat(float l_w, float h_w, float open_sh[], float open_hgh[], float klv_open, struct vanna* V, int s);
 float s_wall(float high, float length_wall);
 float s_open(float open_hgh[], float open_sh[], float klv_open);
 float scanf_vanna(float* l_w, float* h_w);
 float scanf_open(float open_sh[], float open_hgh[]);
-float klv_material(struct plitka * P,struct vanna * V,int hp);
-float cor(struct vanna* V,int s);
-int otch(struct vanna * V, struct plitka * P);
+float klv_material(struct plitka* P, struct vanna* V, int hp);
+float cor(struct vanna* V, int s);
+int otch(struct vanna* V, struct plitka* P);
 int main()
 {
+	system("chcp 1251");
 	struct plitka P;
 	struct vanna V;
 	setlocale(LC_CTYPE, "RUS");
@@ -41,80 +42,80 @@ int main()
 	double c;
 	char ct;
 	int s = 0;
-		puts("***********************************************************************************************************");
-		puts("*Калькулятор для расчета необходимого количества сантехнической керамики для облицовки стен ванной комнаты* \n*с учетом размеров комнаты,окон и дверных проемов                                                         *");
-		puts("***********************************************************************************************************");
-		printf(" _________________________________________________________________________________________________________");
-		puts("\n|Внимание!!!!!!!!                                                                                         |\n|При вводе данных, а именно при вводе длины и ширины стен, а также длины и ширины проёмов,                |\n|будьте внимательныи предельно осторожны                                                                  |\n|Ведь, если площадь стен будет меньше площади проёмов, программа завершит свою работу.                    |");
-		puts("|_________________________________________________________________________________________________________|\n");
-		puts("***********************************************************************************************************");
-		puts("*Перечень пунктов меню                                                                                    *");
-		puts("***********************************************************************************************************");
-		printf("*1 - ввести параметры ванной                                                                              *\n*2 - ввести параметры проёмов                                                                             *\n*3 - ввести параметры плитки                                                                              *\n*4 - рассчитать площадь ванной                                                                            *\n*5 - узнать необходимое кол-во материала                                                                  *\n*6 - сохранить отчёт                                                                                      *\n*7 - завершение программы                                                                                 *\n");
-		puts("***********************************************************************************************************");
-		while (1) {
+	puts("***********************************************************************************************************");
+	puts("*Калькулятор для расчета необходимого количества сантехнической керамики для облицовки стен ванной комнаты* \n*с учетом размеров комнаты,окон и дверных проемов                                                         *");
+	puts("***********************************************************************************************************");
+	printf(" _________________________________________________________________________________________________________");
+	puts("\n|Внимание!!!!!!!!                                                                                         |\n|При вводе данных, а именно при вводе длины и ширины стен, а также длины и ширины проёмов,                |\n|будьте внимательныи предельно осторожны                                                                  |\n|Ведь, если площадь стен будет меньше площади проёмов, программа завершит свою работу.                    |");
+	puts("|_________________________________________________________________________________________________________|\n");
+	puts("***********************************************************************************************************");
+	puts("*Перечень пунктов меню                                                                                    *");
+	puts("***********************************************************************************************************");
+	printf("*1 - ввести параметры ванной                                                                              *\n*2 - ввести параметры проёмов                                                                             *\n*3 - ввести параметры плитки                                                                              *\n*4 - рассчитать площадь ванной                                                                            *\n*5 - узнать необходимое кол-во материала                                                                  *\n*6 - сохранить отчёт                                                                                      *\n*7 - завершение программы                                                                                 *\n");
+	puts("***********************************************************************************************************");
+	while (1) {
 		puts("Введите номер пункта меню");
 		scanf("%d", &d);
-			switch (d) {
-			case 1:
-				scanf_vanna(&length_wall, &high);
-				break;
-			case 2:
-				klv_open = scanf_open(open_sh, open_hgh);
-				break;
-			case 3:
-				scanf_plitka(&P);
-				break;
-			case 4:
-				printf("Если хотите узнать площадь ванной комнаты с учётом проёмов, нажмите 1");
-				printf("\nЕсли хотите узнать площадь ванной комнаты без учёта проёмов, нажмите 2\n");
-				scanf("%d", &s);
-				calculat(length_wall, high, open_sh, open_hgh, klv_open, &V, s);
-				if (cor(&V, s) == 1) {
-					return 0;
-				}
-				break;
-			case 5:
+		switch (d) {
+		case 1:
+			scanf_vanna(&length_wall, &high);
+			break;
+		case 2:
+			klv_open = scanf_open(open_sh, open_hgh);
+			break;
+		case 3:
+			scanf_plitka(&P);
+			break;
+		case 4:
+			printf("Если хотите узнать площадь ванной комнаты с учётом проёмов, нажмите 1");
+			printf("\nЕсли хотите узнать площадь ванной комнаты без учёта проёмов, нажмите 2\n");
+			scanf("%d", &s);
+			calculat(length_wall, high, open_sh, open_hgh, klv_open, &V, s);
+			if (cor(&V, s) == 1) {
+				return 0;
+			}
+			break;
+		case 5:
+			printf("Введите 2, если хотите узнать количество материала без проёмов");
+			printf("\nВведите 1, если хотите узнать количество материала с проёмами\n");
+			scanf("%d", &hp);
+			while (hp != 1 && hp != 2) {
+				puts("Вы должны ввести 1 или 2.");
 				printf("Введите 2, если хотите узнать количество материала без проёмов");
 				printf("\nВведите 1, если хотите узнать количество материала с проёмами\n");
 				scanf("%d", &hp);
-				while (hp != 1 && hp != 2) {
-					puts("Вы должны ввести 1 или 2.");
-					printf("Введите 2, если хотите узнать количество материала без проёмов");
-					printf("\nВведите 1, если хотите узнать количество материала с проёмами\n");
-					scanf("%d", &hp);
-				}
-				material = klv_material(&P, &V, hp);
-				c = ceil(material);
-				printf("Необходимое кол-во материала:%lf м\n", c);
-				break;
-			case 6:
-				printf("Отчёт успешно сохранён\n");
-				otch(&V, &P);
-				break;
-			case 7:
-				return 0;
-			default:
-				scanf("%c", &ct);
-				puts("Вы не выбрали пункт меню");
 			}
+			material = klv_material(&P, &V, hp);
+			c = ceil(material);
+			printf("Необходимое кол-во материала:%lf м\n", c);
+			break;
+		case 6:
+			printf("Отчёт успешно сохранён\n");
+			otch(&V, &P);
+			break;
+		case 7:
+			return 0;
+		default:
+			scanf("%c", &ct);
+			puts("Вы не выбрали пункт меню");
+		}
 	}
 }
-float calculat(float l_w, float h_w, float open_sh[], float open_hgh[], float klv_open, struct vanna* V,int s) {
-	while(s!=1 && s!=2){
+float calculat(float l_w, float h_w, float open_sh[], float open_hgh[], float klv_open, struct vanna* V, int s) {
+	while (s != 1 && s != 2) {
 		puts("Вы должны ввести 1 или 2\nПовторите действие");
 		printf("Если хотите узнать площадь ванной комнаты с учётом проёмов, нажмите 1");
 		printf("\nЕсли хотите узнать площадь ванной комнаты без учёта проёмов, нажмите 2\n");
 		scanf("%d", &s);
 	}
-	if (s == 2) 
+	if (s == 2)
 	{
 		V->s_without_openings = s_wall(l_w, h_w);
 		V->s_with_openings = s_wall(l_w, h_w) - s_open(open_hgh, open_sh, klv_open);
 		printf("%f\n", V->s_without_openings);
 		return V->s_without_openings;
 	}
-	else if (s == 1) 
+	else if (s == 1)
 	{
 		V->s_with_openings = s_wall(l_w, h_w) - s_open(open_hgh, open_sh, klv_open);
 		V->s_without_openings = s_wall(l_w, h_w);
@@ -122,8 +123,8 @@ float calculat(float l_w, float h_w, float open_sh[], float open_hgh[], float kl
 		return V->s_with_openings;
 	}
 }
-float cor(struct vanna* V,int s) {
-	if(V->s_with_openings<=0 && s == 1){
+float cor(struct vanna* V, int s) {
+	if (V->s_with_openings <= 0 && s == 1) {
 		puts("К сожалению вы не были бдительны при вводе данных\nПрограмма завершает своё действие так как площадь не может быть отрицательной");
 		return 1;
 	}
@@ -135,7 +136,7 @@ float cor(struct vanna* V,int s) {
 float s_wall(float high, float length_wall) {
 	return 4 * high * length_wall;
 }
-float s_open(float open_hgh[], float open_sh[],float klv_open) {
+float s_open(float open_hgh[], float open_sh[], float klv_open) {
 	float s = 0;
 	for (int i = 0; i < klv_open; i++) {
 		s = s + open_hgh[i] * open_sh[i];
@@ -147,41 +148,41 @@ float scanf_plitka(struct plitka* P) {
 	char flag_1;
 	float sh_p;
 	float high_p;
+	printf("Выберите вид строительного материала\n1.Керамическая плитка\n2.Стеклянная мозаика\n3.Натуральный камень\n");
+	scanf("%d", &flag);
+	switch (flag) {
+	case 1:
+		puts("Вы выбрали:Керамическая плитка");
+		break;
+	case 2:
+		puts("Вы выбрали:Стеклянная мозаика");
+		break;
+	case 3:
+		puts("Вы выбрали:Натуральный камень");
+		break;
+	default:
+		scanf("%c", &flag_1);
+		puts("Вы не выбрали вид строительного материала");
 		printf("Выберите вид строительного материала\n1.Керамическая плитка\n2.Стеклянная мозаика\n3.Натуральный камень\n");
 		scanf("%d", &flag);
-		switch (flag) {
-		case 1:
-			puts("Вы выбрали:Керамическая плитка");
-			break;
-		case 2:
-			puts("Вы выбрали:Стеклянная мозаика");
-			break;
-		case 3:
-			puts("Вы выбрали:Натуральный камень");
-			break;
-		default:
-			scanf("%c", &flag_1);
-			puts("Вы не выбрали вид строительного материала");
-			printf("Выберите вид строительного материала\n1.Керамическая плитка\n2.Стеклянная мозаика\n3.Натуральный камень\n");
-			scanf("%d", &flag);
-		}
-		P->type_material = flag;
+	}
+	P->type_material = flag;
+	printf("Введите ширину плитки - м\n");
+	scanf("%f", &sh_p);
+	while (sh_p <= 0) {
+		puts("Вы ввели некорекктное значение\nПопробуйте ещё раз");
 		printf("Введите ширину плитки - м\n");
 		scanf("%f", &sh_p);
-		while (sh_p <= 0) {
-			puts("Вы ввели некорекктное значение\nПопробуйте ещё раз");
-			printf("Введите ширину плитки - м\n");
-			scanf("%f", &sh_p);
-		}
-		P->shirina_plitka = sh_p;
+	}
+	P->shirina_plitka = sh_p;
+	printf("Введите высоту плитки - м\n");
+	scanf("%f", &high_p);
+	while (high_p <= 0) {
+		puts("Вы ввели некорекктное значение\nПопробуйте ещё раз");
 		printf("Введите высоту плитки - м\n");
 		scanf("%f", &high_p);
-		while (high_p <= 0) {
-			puts("Вы ввели некорекктное значение\nПопробуйте ещё раз");
-			printf("Введите высоту плитки - м\n");
-			scanf("%f", &high_p);
-		}
-		P->high_plitka = high_p;
+	}
+	P->high_plitka = high_p;
 }
 float scanf_vanna(float* l_w, float* h_w) {
 	puts("Введите ширину стены - м");
@@ -208,15 +209,15 @@ float scanf_open(float open_sh[], float open_hgh[]) {
 		printf("Введите кол-во проёмов\n");
 		scanf("%f", &klv_open);
 	}
-		for (int i = 0; i < klv_open; i++) {
+	for (int i = 0; i < klv_open; i++) {
+		printf("Введите ширину %d проёма м\n", i + 1);
+		scanf("%f", &open_sh[i]);
+		while (open_sh[i] <= 0) {
+			puts("Вы ввели некорректное значение\nПопробуйте ещё раз");
 			printf("Введите ширину %d проёма м\n", i + 1);
 			scanf("%f", &open_sh[i]);
-			while (open_sh[i] <= 0) {
-				puts("Вы ввели некорректное значение\nПопробуйте ещё раз");
-				printf("Введите ширину %d проёма м\n", i + 1);
-				scanf("%f", &open_sh[i]);
-			}
 		}
+	}
 	for (int i = 0; i < klv_open; i++) {
 		printf("Введите высоту %d проёма м\n", i + 1);
 		scanf("%f", &open_hgh[i]);
@@ -240,7 +241,7 @@ int otch(struct vanna* V, struct plitka* P) {
 	fprintf(out, "\nВысота плитки:%.4f м\n", P->high_plitka);
 	fprintf(out, "\nПлощадь ванной комнаты с учётом проёмов %f м^2\n", V->s_with_openings);
 	fprintf(out, "\nПлощадь ванной комнаты без учёта проёмов %f м^2\n", V->s_without_openings);
-	fprintf(out, "\nНеобходимое кол-во материала для облицовки стен ванной комнаты площадью:%f с учётом проёмов = %.0f м^2\n",V->s_with_openings,ceil(V->col_vo_material));
+	fprintf(out, "\nНеобходимое кол-во материала для облицовки стен ванной комнаты площадью:%f с учётом проёмов = %.0f м^2\n", V->s_with_openings, ceil(V->col_vo_material));
 	fprintf(out, "\nНеобходимое кол-во материала для облицовки стен ванной комнаты площадью:%f без учёта проёмов = %.0f м^2\n", V->s_without_openings, ceil(V->col_vo_material));
 	fclose(out);
 	return 0;
