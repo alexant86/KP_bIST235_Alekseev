@@ -1,0 +1,12 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (Курсовая.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  FileName.c
+C:\Users\User\source\repos\Курсовая\FileName.c(33,27): warning C4101: length_opening: неиспользованная локальная переменная
+C:\Users\User\source\repos\Курсовая\FileName.c(32,6): warning C4101: s_o: неиспользованная локальная переменная
+C:\Users\User\source\repos\Курсовая\FileName.c(31,6): warning C4101: s_w: неиспользованная локальная переменная
+C:\Users\User\source\repos\Курсовая\FileName.c(34,6): warning C4101: flag: неиспользованная локальная переменная
+C:\Users\User\source\repos\Курсовая\FileName.c(33,43): warning C4101: high_opening: неиспользованная локальная переменная
+C:\Users\User\source\repos\Курсовая\FileName.c(124): warning C4715: calculat: значение возвращается не при всех путях выполнения
+C:\Users\User\source\repos\Курсовая\FileName.c(185): warning C4716: scanf_plitka: должна возвращать значение
+C:\Users\User\source\repos\Курсовая\FileName.c(201): warning C4716: scanf_vanna: должна возвращать значение
+C:\Users\User\source\repos\Курсовая\FileName.c(257): warning C4715: klv_material: значение возвращается не при всех путях выполнения
+  Курсовая.vcxproj -> C:\Users\User\source\repos\Курсовая\x64\Debug\КП.exe
