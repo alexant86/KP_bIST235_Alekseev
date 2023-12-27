@@ -23,7 +23,6 @@ float cor(struct vanna* V, int s);
 int otch(struct vanna* V, struct plitka* P);
 int main()
 {
-	system("chcp 1251");
 	struct plitka P;
 	struct vanna V;
 	setlocale(LC_CTYPE, "RUS");
